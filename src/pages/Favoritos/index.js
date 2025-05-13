@@ -1,10 +1,12 @@
 import Banner from 'components/Banner';
 import styles from './Favoritos.module.css';
-import videosTemporarios from 'json/db.json'
 import Card from 'components/Card';
 import Titulo from 'components/Titulo';
+import { useFavoritoContext } from 'contextos/Favoritos';
 
 function Favoritos() {
+    const { favorito } = useFavoritoContext();	
+
     return (
         <>
             <Banner imagem='favoritos' />
@@ -14,8 +16,8 @@ function Favoritos() {
             </Titulo>
 
             <section className={styles.container}>
-                {videosTemporarios.map((video) => {
-                    return <Card {...video} key={video.id} />
+                {favorito.map((item) => {
+                    return <Card {...item} key={item.id} />
                 })}
             </section>
         </>
